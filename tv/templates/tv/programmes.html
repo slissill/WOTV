@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Programmes{% endblock %}
+
+{% block content %}
+
+{% include 'criteres.html' %}
+
+
+
+<ul>
+    {% for item in programmes_infos %} 
+    <li>{{ item.id}}  {{ item.url_cover }}</li>
+    {% endfor %}
+</ul>
+
+
+
+
+
+
+{% for item in programmes %} 
+    {% include 'programme_item.html' with item=item %}
+{% endfor %}
+
+{% endblock %}

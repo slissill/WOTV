@@ -1,0 +1,40 @@
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var clickableLinks = document.querySelectorAll("a[atype='critere_select']");
+    clickableLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Empêcher le comportement par défaut du lien
+            var linkValue = link.getAttribute("data_value");
+            var inputFormId = link.getAttribute("destination_input_form");
+            document.getElementById(inputFormId).value = linkValue;
+            document.getElementById("myForm").submit();
+        });
+    });
+});
+</script>
+
+
+<form id="myForm" method="post">
+    {% csrf_token %}
+    {% for crit in criteres %}        
+        <input type="hidden" name="{{crit.name}}" id="{{crit.name}}" value="{{crit.value}}">
+    {% endfor %}
+</form>
+
+
+<!-- <div class="container"> -->
+{% for crit in criteres %}        
+    {% if crit.liste|length > 1  %}
+        <ul class="nav nav-pills" style="padding-bottom: 5px;">
+        {% for item in crit.liste %}
+            {% if item.code == crit.value %}                
+            <li class="active"><a href="#">{{ item.name }}</a></li>
+            {% else %}                
+            <li><a href="#" atype = "critere_select" data_value="{{ item.code }}" destination_input_form = "{{crit.name}}">{{ item.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endfor %}
+<!-- </div> -->

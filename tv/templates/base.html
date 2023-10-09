@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<HEAD>
+    <title>{% block title %}base{% endblock %}</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/lib/bootstrap.min.css">
+    <script src="/lib/jquery-1.12.2.min.js"></script>
+    <script src="/lib/bootstrap.min.js"></script>    
+    
+    <!-- <link rel="stylesheet" href="{% static 'tv/css/main.css' %}">     -->
+    {% block script %}{% endblock %}
+
+
+    <style>
+        body {
+          background-color: #333; /* Fond sombre pour le corps */
+          color: #fff; /* Texte en couleur blanche */
+        }
+      
+        .navbar {
+          background-color: #222; /* Fond sombre pour la barre de navigation */
+        }
+      
+        .btn {
+          background-color: #444; /* Boutons avec un fond sombre */
+          color: #fff; /* Texte en couleur blanche pour les boutons */
+          border: none; /* Supprimer les bordures des boutons pour un look épuré */
+        }
+      
+        .btn:hover {
+          background-color: #555; /* Légère variation de couleur au survol des boutons */
+        }
+      
+    </style>
+
+
+</HEAD>
+<BODY>
+
+ {% url 'tv:programmes' as url_programmes %} 
+ {% url 'tv:ref_channels' as url_ref_channels %}
+ {% url 'tv:ref_categories' as url_ref_categories %}
+ {% url 'tv:ref_tranches' as url_ref_tranches %}
+ {% url 'tv:update' as url_update %}
+ {% url 'tv:ma_table' as url_ma_table %}
+ {% url 'tv:progs' as url_progs %}
+
+     <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'tv:programmes' %}">WOTV</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li {% if request.path == url_programmes %} class="active"{% endif %}><a href ="{% url 'tv:programmes' %}">Programmes</a></li>            
+            <li {% if request.path == url_ref_channels %}class="active"{% endif %}><a href ="{% url 'tv:ref_channels' %}">Chaines</a></li>
+            <li {% if request.path == url_ref_categories %}class="active"{% endif %}><a href ="{% url 'tv:ref_categories' %}">Categories</a></li>
+            <li {% if request.path == url_ref_tranches %}class="active"{% endif %}><a href ="{% url 'tv:ref_tranches' %}">Horaires</a></li>
+            <li {% if request.path == url_update %}class="active"{% endif %}><a href ="{% url 'tv:update' %}">Mise à jour</a></li>
+            <li {% if request.path == url_ma_table %}class="active"{% endif %}><a href ="{% url 'tv:ma_table' %}">Ma table</a></li>
+            <li {% if request.path == url_progs %}class="active"{% endif %}><a href ="{% url 'tv:progs' %}">Progs</a></li>
+
+
+          </ul>
+        </div>
+      </nav>    
+
+        
+    <div class="container bg-dark text-light">
+        {% block content %}{% endblock %}
+    </div>
+    
+</BODY>
+</HTML>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Films{% endblock %}
+
+{% block content %}
+
+
+{% include 'criteres.html' %}
+
+{% for item in progs %} 
+    {% include 'prog_item.html' with item=item %}
+{% endfor %}
+
+{% endblock %}
+

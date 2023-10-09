@@ -1,0 +1,75 @@
+{% load static %}
+
+
+<!-- <div >
+    <div class="row">
+      <div class="col-sm-4" >.col-sm-4</div>
+      <div class="col-sm-4" >.col-sm-4</div>
+      <div class="col-sm-4" >.col-sm-4</div>
+    </div>
+</div> -->
+
+
+<div class="container">
+    
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#programme-{{ item.id }}" style="width: 100%;">
+
+    
+        <div class="row align-items-center">
+            <div class="col-sm-1" >
+                <img
+                src="{% static 'tv/images/channels/' %}{{ item.channel.display_name }}.png" 
+                alt="{{ item.channel.display_name }}" 
+                title="{{ item.channel.display_name }}"
+                >    
+            </div>
+
+            <div class="col-sm-1" >{{ item.hdeb }}</div>
+            <div class="col-sm-1" >{{ item.genre }}</div>
+            <div class="col-sm-7" style="font-size: x-large;" >{{ item.title }}</div>
+            <div class="col-sm-1" >{{ item.duree }}</div>
+            <div class="col-sm-1" >{% for i in item.note %}<img src="{% static 'tv/images/star.png' %}" height="8px">{% endfor %}</div>
+        </div>
+    
+
+        <!-- <div style="display: flex; align-items: center;">
+
+            <img   style="margin-right: 10px;" 
+                    src="{% static 'tv/images/channels/' %}{{ item.channel.display_name }}.png" 
+                    alt="{{ item.channel.display_name }}" 
+                    title="{{ item.channel.display_name }}" 
+                    height="35"
+                    >    
+            <label style="margin-right: 10px;">{{ item.hdeb }}</label>            
+            <label style="margin-right: 10px;  width: 100px; font-size: x-small;">{{ item.genre }}</label>
+            <label style="margin-right: 10px; font-size: x-large;">{{ item.title }}</label>
+            <label style="margin-right: 10px; ">{{ item.duree }}</label>
+            {% for i in item.note %}
+                <img src="{% static 'tv/images/star.png' %}" height="10px">
+            {% endfor %}
+        </div> -->
+
+    </button>
+    <div id="programme-{{ item.id }}" class="collapse" style="padding: 10px;">
+        {{ item.description }}
+        <table>
+            <tr>
+                <td style="padding: 10px;"><img class="img-thumbnail" src="{{item.json_data.cover}}" height="200px"></td>
+                <td style="padding: 10px;"><img class="img-rounded" src="{{item.icon_sc}}" height="200px"></td>
+                <td style="padding: 10px;">
+                    <br/><a href="https://www.imdb.com/title/tt{{item.json_data.id}}/">{{ item.title }} sur IMDB</a>
+                    <br/><label>Années : {{ item.json_data.year }}</label>
+                    <br/><label>Réalisateur : {{ item.json_data.director }}</label>
+                    <br/><label>Rating : {{ item.json_data.rating }}</label>
+                    <br/>
+                    <label>Acteurs : 
+                        {% for actor in item.json_data.cast %}
+                            {{ actor.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </label>
+                           
+                </td>
+            </tr>
+        </table>        
+    </div>
+  </div>

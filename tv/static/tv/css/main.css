@@ -1,0 +1,68 @@
+
+body
+{
+    background-color:burlywood;
+    color: blue;
+    margin: 0;
+    padding: 0;
+    width: 1000px;   /* 800px */
+}
+
+/* Style du bandeau supérieur */
+.top-banner {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style du bandeau latéral */
+.sidebar {
+    background-color: #f0f0f0;
+    float: left;
+    width: 200px;    
+    height: 100vh;   /* height: 100%; */
+    padding: 10px;
+}
+
+/* Style du contenu de la page */
+.content-sidebar {
+    margin-left: 220px; /* Prend en compte la largeur du bandeau latéral */
+    padding: 20px;
+}
+
+.content {    
+    padding: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  tr.header {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  tr.description {
+    background-color: #007bff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    display: none;
+  }
+  
+  tr.open {
+    display:block;
+    background-color: #1aff00;
+    max-height: 500px; /* Hauteur maximale pour afficher le contenu déplié */
+    
+  }
+
+  td {
+    border: 1px solid black;
+    padding: 3px;
+    text-align: center;
+  }
