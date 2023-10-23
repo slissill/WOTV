@@ -46,26 +46,14 @@
 </HEAD>
 <BODY>
 
- {% url 'tv:programmes' as url_programmes %} 
- {% url 'tv:ref_channels' as url_ref_channels %}
- {% url 'tv:ref_categories' as url_ref_categories %}
- {% url 'tv:ref_tranches' as url_ref_tranches %}
- {% url 'tv:update' as url_update %}
- {% url 'tv:ma_table' as url_ma_table %}
  {% url 'tv:progs' as url_progs %}
 
      <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'tv:programmes' %}">WOTV</a>
+            <a class="navbar-brand" href="{% url 'tv:progs' %}">WOTV</a>
           </div>
           <ul class="nav navbar-nav">
-            <li {% if request.path == url_programmes %} class="active"{% endif %}><a href ="{% url 'tv:programmes' %}">Programmes</a></li>            
-            <li {% if request.path == url_ref_channels %}class="active"{% endif %}><a href ="{% url 'tv:ref_channels' %}">Chaines</a></li>
-            <li {% if request.path == url_ref_categories %}class="active"{% endif %}><a href ="{% url 'tv:ref_categories' %}">Categories</a></li>
-            <li {% if request.path == url_ref_tranches %}class="active"{% endif %}><a href ="{% url 'tv:ref_tranches' %}">Horaires</a></li>
-            <li {% if request.path == url_update %}class="active"{% endif %}><a href ="{% url 'tv:update' %}">Mise à jour</a></li>
-            <li {% if request.path == url_ma_table %}class="active"{% endif %}><a href ="{% url 'tv:ma_table' %}">Ma table</a></li>
             <li {% if request.path == url_progs %}class="active"{% endif %}><a href ="{% url 'tv:progs' %}">Progs</a></li>
 
 
